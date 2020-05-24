@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace CardGen_srv.Card
+namespace Serv.Card
 {
     public class Card
     {

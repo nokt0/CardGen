@@ -1,4 +1,4 @@
-﻿namespace CardGen_srv.Card
+﻿namespace Car.Card
 {
     public enum CardColor
     {

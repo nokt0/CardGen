@@ -1,6 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGen", "CardGen\CardGen.csproj", "{CA047E9A-92DA-48C5-952D-C3CB24E5F8CB}"
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardGen-lib", "CardGen-lib\CardGen-lib.csproj", "{3F8BEA53-7A44-47CD-9664-FB7E3CD9203E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Server", "Server\Server.csproj", "{89804AA7-72ED-456E-9D6D-E2678BEB8331}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -8,9 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CA047E9A-92DA-48C5-952D-C3CB24E5F8CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA047E9A-92DA-48C5-952D-C3CB24E5F8CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA047E9A-92DA-48C5-952D-C3CB24E5F8CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA047E9A-92DA-48C5-952D-C3CB24E5F8CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F8BEA53-7A44-47CD-9664-FB7E3CD9203E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F8BEA53-7A44-47CD-9664-FB7E3CD9203E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F8BEA53-7A44-47CD-9664-FB7E3CD9203E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F8BEA53-7A44-47CD-9664-FB7E3CD9203E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89804AA7-72ED-456E-9D6D-E2678BEB8331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89804AA7-72ED-456E-9D6D-E2678BEB8331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89804AA7-72ED-456E-9D6D-E2678BEB8331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89804AA7-72ED-456E-9D6D-E2678BEB8331}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8074F487-18B2-4CB9-A0A5-EFC0C51A62C1}
 	EndGlobalSection
 EndGlobal
