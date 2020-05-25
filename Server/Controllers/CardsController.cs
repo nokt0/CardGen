@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -82,6 +83,7 @@ namespace Server.Controllers
 
                 _context.UserCard.Add(new UserCard
                 {
+                    Id = 0,
                     CardId = cardFromDb.Id,
                     User = User.Identity.Name
                 });
@@ -179,9 +181,63 @@ namespace Server.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CardExists(int id)
+        public async Task<IActionResult> Transfer(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var card = await _context.Card
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            return View(card);
+        }
+
+        [HttpPost, ActionName("Transfer")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Transfer(IFormCollection collection)
+        {
+
+            int id;
+            if (!Int32.TryParse(collection["id"].First(), out id))
+            {
+                return NotFound();
+            }
+            var username = collection["user"].First();
+
+            var card = await _context.Card
+                .FirstOrDefaultAsync(m => m.Id == id);
+
+            if (card == null)
+            {
+                return NotFound();
+            }
+
+            var transition = await _context.UserCard.FirstOrDefaultAsync(item => item.CardId == id && item.User == username);
+
+            if (transition == null)
+            {
+                return NotFound();
+            }
+
+            transition.User = username;
+            _context.Update(transition);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+            private bool CardExists(int id)
         {
             return _context.Card.Any(e => e.Id == id);
         }
+
+
     }
 }

@@ -1,0 +1,77 @@
+﻿@model Server.Models.Card
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Transfer</title>
+</head>
+<body>
+
+    <h3>To whom do you want to send the card?</h3>
+    <div>
+        <h4>Card</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.SubType)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.SubType)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Cost)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Cost)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Rarity)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Rarity)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Type)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Type)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Quality)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Quality)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Abilities)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Abilities)
+            </dd>
+        </dl>
+
+        @using (Html.BeginForm("Transfer", "Cards", FormMethod.Post))
+        {
+            <input type="hidden"value=@Model.Id name="id" />
+            <input type="text" name="user" placeholder="name@mail.com" />
+            <input type="submit" value="Transfer" class="btn btn-danger" />
+        }
+
+        @*
+        <form asp-action="Transfer">
+            <input type="hidden" asp-route-id=@Model.Id />
+            <input type="text" asp-route="user" placeholder="name@mail.com" />
+            <input type="submit" value="Transfer" class="btn btn-danger" /> |
+            <a asp-action="Index">Back to List</a>
+        </form>*@
+    </div>
+</body>
+</html>
