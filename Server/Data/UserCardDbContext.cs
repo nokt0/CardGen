@@ -45,8 +45,6 @@ namespace Server.Data
 
             modelBuilder.Entity<UserCard>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
                 entity.Property(e => e.User).IsRequired();
             });
 

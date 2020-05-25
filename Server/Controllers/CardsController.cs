@@ -14,11 +14,12 @@ namespace Server.Controllers
     public class CardsController : Controller
     {
         private readonly UserCardDbContext _context;
+        private readonly ApplicationDbContext _appContext;
 
-        public CardsController(UserCardDbContext context)
+        public CardsController(UserCardDbContext context,ApplicationDbContext appContext)
         {
             _context = context;
-
+            _appContext = appContext;
         }
 
         // GET: Cards
@@ -219,9 +220,15 @@ namespace Server.Controllers
                 return NotFound();
             }
 
-            var transition = await _context.UserCard.FirstOrDefaultAsync(item => item.CardId == id && item.User == username);
+            var transition = await _context.UserCard.FirstOrDefaultAsync(item => item.CardId == id && item.User == User.Identity.Name);
 
             if (transition == null)
+            {
+                return NotFound();
+            }
+
+            var login = _appContext.Users.Any(user => user.UserName == username);
+            if (!login)
             {
                 return NotFound();
             }
