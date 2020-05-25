@@ -39,7 +39,11 @@ namespace Server
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddControllersWithViews();
-            services.AddRazorPages();
+            services.AddRazorPages().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AuthorizeFolder("/Cards");
+                options.Conventions.AuthorizePage("/Home/Privacy");
+            });
 
         }
 
