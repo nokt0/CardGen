@@ -7,18 +7,19 @@ using Server.Models;
 
 namespace Server.Data
 {
-    public partial class CardDbContext : DbContext
+    public partial class UserCardDbContext : DbContext
     {
-        public CardDbContext()
+        public UserCardDbContext()
         {
         }
 
-        public CardDbContext(DbContextOptions<CardDbContext> options)
+        public UserCardDbContext(DbContextOptions<UserCardDbContext> options)
             : base(options)
         {
         }
 
         public virtual DbSet<Card> Card { get; set; }
+        public virtual DbSet<UserCard> UserCard { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -40,6 +41,13 @@ namespace Server.Data
                 entity.Property(e => e.Rarity).IsRequired();
 
                 entity.Property(e => e.Type).IsRequired();
+            });
+
+            modelBuilder.Entity<UserCard>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.User).IsRequired();
             });
 
             OnModelCreatingPartial(modelBuilder);

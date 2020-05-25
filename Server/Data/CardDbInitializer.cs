@@ -3,7 +3,7 @@ namespace Server.Data
 {
     public class CardDbInitializer
     {
-        public static void Initialize(CardDbContext context)
+        public static void Initialize(UserCardDbContext context)
         {
             if (!context.Card.Any())
             {

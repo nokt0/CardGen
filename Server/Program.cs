@@ -23,7 +23,7 @@ namespace Server
 
                 try
                 {
-                    var context = services.GetRequiredService<CardDbContext>();
+                    var context = services.GetRequiredService<UserCardDbContext>();
                     CardDbInitializer.Initialize(context);
                     var list = context.Card.ToList();
                 }

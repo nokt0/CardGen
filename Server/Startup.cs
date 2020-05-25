@@ -31,7 +31,7 @@ namespace Server
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddDbContext<CardDbContext>(options =>
+            services.AddDbContext<UserCardDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
 

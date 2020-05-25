@@ -1,5 +1,5 @@
 ﻿{
-   "ContextClassName": "CardDbContext",
+   "ContextClassName": "UserCardDbContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "DoNotCombineNamespace": false,
@@ -15,6 +15,10 @@
       {
          "HasPrimaryKey": true,
          "Name": "[dbo].[Card]"
+      },
+      {
+         "HasPrimaryKey": true,
+         "Name": "[dbo].[UserCard]"
       }
    ],
    "UseDatabaseNames": false,
